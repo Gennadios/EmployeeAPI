@@ -14,4 +14,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeeApi.Database.EF\EmployeeApi.Database.EF.csproj" />
+  </ItemGroup>
+
 </Project>
