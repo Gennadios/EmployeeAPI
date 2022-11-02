@@ -8,6 +8,9 @@ namespace EmployeeApi.Database.EF.ModelConfigurations
     {
         public void Configure(EntityTypeBuilder<Employee> builder)
         {
+            builder.Property(employee => employee.Id)
+                .HasColumnName("id");
+
             builder.Property(employee => employee.FirstName)
                 .HasColumnName("first_name")
                 .HasMaxLength(128)
