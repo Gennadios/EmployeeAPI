@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace EmployeeApi.Database.EF
 {
-    internal class AppDbContext : DbContext
+    public class AppDbContext : DbContext
     {
         public DbSet<Employee> Employees { get; set; }
 
