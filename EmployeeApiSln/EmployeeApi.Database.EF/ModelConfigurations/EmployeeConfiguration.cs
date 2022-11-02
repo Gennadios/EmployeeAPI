@@ -25,6 +25,7 @@ namespace EmployeeApi.Database.EF.ModelConfigurations
 
             builder.Property(employee => employee.Salary)
                 .HasColumnName("salary")
+                .HasColumnType("decimal(10, 2)")
                 .IsRequired();
 
             builder.Property(employee => employee.JoinDate)
