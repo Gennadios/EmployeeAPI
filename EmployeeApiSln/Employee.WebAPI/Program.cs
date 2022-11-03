@@ -1,4 +1,6 @@
 using Employee.WebAPI.Extensions;
+using Employee.WebAPI.Services;
+using Employee.WebAPI.Services.Interfaces;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddAndConfigureDatabase(builder.Configuration);
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
