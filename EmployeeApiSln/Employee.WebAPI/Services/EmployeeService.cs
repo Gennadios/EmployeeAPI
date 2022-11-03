@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Employee.WebAPI.ApiModels.Employee;
+using Employee.WebAPI.Exceptions;
 using Employee.WebAPI.Services.Interfaces;
 using EmployeeApi.Database.EF;
 using Microsoft.EntityFrameworkCore;
@@ -31,7 +32,7 @@ namespace Employee.WebAPI.Services
 
             if (employee == null)
             {
-                // TODO: Throw Not Found exception.
+                throw ApiResult.NotFound();
             }
 
             return employee; 
@@ -50,13 +51,13 @@ namespace Employee.WebAPI.Services
         {
             if (employeeId != employeeModel.Id)
             {
-                // TODO: Throw validation exception.
+                throw ApiResult.ValidationUpdateId();
             }
 
             var dbEmployee = await _dbContext.Employees.FindAsync(employeeId, ct);
             if (dbEmployee == null)
             {
-                // TODO: Throw Not Found exception.
+                throw ApiResult.NotFound();
             }
 
             _mapper.Map(employeeModel, dbEmployee);
@@ -70,7 +71,7 @@ namespace Employee.WebAPI.Services
             var dbEmployee = await _dbContext.Employees.FindAsync(employeeId, ct);
             if (dbEmployee == null)
             {
-                // TODO: Throw Not Found exception.
+                throw ApiResult.NotFound();
             }
 
             var employee = _mapper.Map<EmployeeApiModel>(dbEmployee);
