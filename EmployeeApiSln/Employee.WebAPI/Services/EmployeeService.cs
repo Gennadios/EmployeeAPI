@@ -54,7 +54,7 @@ namespace Employee.WebAPI.Services
                 throw ApiResult.ValidationUpdateId();
             }
 
-            var dbEmployee = await _dbContext.Employees.FindAsync(employeeId, ct);
+            var dbEmployee = await _dbContext.Employees.FindAsync(new object[] { employeeId }, ct);
             if (dbEmployee == null)
             {
                 throw ApiResult.NotFound();
@@ -68,7 +68,7 @@ namespace Employee.WebAPI.Services
 
         public async Task<EmployeeApiModel> DeleteEmployeeByIdAsync(int employeeId, CancellationToken ct)
         {
-            var dbEmployee = await _dbContext.Employees.FindAsync(employeeId, ct);
+            var dbEmployee = await _dbContext.Employees.FindAsync(new object[] { employeeId }, ct);
             if (dbEmployee == null)
             {
                 throw ApiResult.NotFound();
