@@ -14,6 +14,7 @@ namespace Employee.WebAPI.Mappings
                 .ForMember(x => x.JoinDate, x => x.MapFrom(x => utcNow));
 
             CreateMap<EmployeeApi.Database.EF.Models.Employee, EmployeeApiModel>();
+            CreateMap<EmployeeApiModel, EmployeeApi.Database.EF.Models.Employee>();
         }
     }
 }
